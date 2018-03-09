@@ -166,12 +166,14 @@ grails:
         digestAlgorithm: 'sha256'
         userGroupAttribute: 'memberOf' # ???
         userGroupToRoleMapping:
-          - ROLE_MY_APP_ROLE: 'CN=MYSAMLGROUP, OU=MyAppGroups, DC=myldap, DC=example, DC=com'
-        autoCreate.active: false # We won't create user, if they're in the IdP but not Unbox, they should not have access
-        #autoCreate.key: 'id'
+            ROLE_MY_APP_ROLE: 'CN=MYSAMLGROUP, OU=MyAppGroups, DC=myldap, DC=example, DC=com'
+        autoCreate:
+            active: false # We won't create user, if they're in the IdP but not Unbox, they should not have access
+            key: 'id'
+            assignAuthorities: false
         metadata:
           providers:
-            - ping: 'security/idp-local.xml'
+            ping: 'security/idp-local.xml'
           defaultIdp: 'ping'
           url: '/saml/metadata'
           sp:
@@ -189,8 +191,7 @@ grails:
               requireLogoutResponseSigned: false
         keyManager:
           storeFile: "classpath:security/keystore.jks"
-          storePass: 'changeit'
+          storePass: 'nalle123'
           passwords:
-            ping: 'changeit'
+            ping: 'ping123'
           defaultKey: 'ping'
-
